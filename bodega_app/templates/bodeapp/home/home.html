@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -40,4 +40,21 @@
   </div>
 </nav>
 
-{% endblock content %}
+{% else %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <div class="error-template">
+        <h1>Oops!</h1>
+        <h2>No estás autenticado</h2>
+        <div class="error-details">Tienes que iniciar sesión</div>
+        <div class="error-actions">
+          <a href="{% url 'login' %}" class="btn btn-primary btn-lg"
+            ><span class="glyphicon glyphicon-home"></span> Volver al login
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %} {% endblock content %}
