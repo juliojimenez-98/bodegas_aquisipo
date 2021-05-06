@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.urls import include
+
 from bodega_app import views
+
+from bodega_app.views import BodegasListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +28,6 @@ urlpatterns = [
     path('login', views.login_view, name="login"),
     path('logout', views.logout_view, name="logout"),
     path('home', views.home, name="home"),
+    path('home/bodegas', BodegasListView.as_view(), name="bodegas"),
+    path("home/bodegas/", include('bodega_app.urls'))
 ]
