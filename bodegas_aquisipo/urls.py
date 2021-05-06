@@ -29,5 +29,7 @@ urlpatterns = [
     path('logout', views.logout_view, name="logout"),
     path('home', views.home, name="home"),
     path('home/bodegas', BodegasListView.as_view(), name="bodegas"),
+    path("home/bodegas/add", views.add_bodega, name="add-bodega"),
+
     path("home/bodegas/", include('bodega_app.urls'))
 ]

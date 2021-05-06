@@ -11,6 +11,8 @@ from bodega_app.models import Bodega
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
+from .forms import AddBodegaForm
+
 
 
 
@@ -46,11 +48,27 @@ def home(request):
 
 
 
+
 def logout_view(request):
     logout(request)
     messages.success(request, 'Session cerrada exitosamente')
     return redirect('login')
 
+def add_bodega(request):
+    form=AddBodegaForm(request.POST or None)
+
+    if request.method == 'POST' and form.is_valid():
+        numerodebodega = request.POST['nrodebodega']
+
+        descripciondebodega = request.POST['descripcion']
+
+        print(numerodebodega, descripciondebodega)
+        bodega = Bodega.objects.create(numero=numerodebodega,descripcion=descripciondebodega)
+        if bodega:
+            return redirect('bodegas')
+
+   
+    return render(request, "bodeapp/home/add-bodega.html", {'form':form})
 class BodegasListView(ListView):
     template_name = "bodeapp/home/bodegas.html"
     queryset = Bodega.objects.all().order_by('-numero')
@@ -59,7 +77,6 @@ class BodegasListView(ListView):
         context = super().get_context_data(**kwargs)
         context["message"] = 'Listado de bodegas' 
         context["Bodegas"] = context["object_list"]
-        print(context)
         return context
     
 class BodegaDetailView(DetailView):

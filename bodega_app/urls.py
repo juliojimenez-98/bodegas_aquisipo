@@ -6,5 +6,5 @@ from . import views
 
 urlpatterns = [
     
-    path("<pk>", views.BodegaDetailView.as_view(), name="detalle-bodega")
+    path("<pk>", views.BodegaDetailView.as_view(), name="detalle-bodega"),
 ]
