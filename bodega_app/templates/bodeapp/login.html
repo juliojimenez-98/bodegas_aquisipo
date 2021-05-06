@@ -16,10 +16,20 @@
               <p class="text-muted mb-4">
                 Slogan de bodegas aqui sipo o otro texto
               </p>
-              <form>
+              {% if messages %} {% for message in messages %}
+              <div
+                id="alert"
+                class="col-sm-12 alert {% if message.tags == 'success' %}alert-success {% else %}alert-danger {% endif %}"
+              >
+                {{message}}
+              </div>
+              {% endfor %} {% endif %}
+              <form method="post">
+                {% csrf_token %}
                 <div class="form-group mb-3">
                   <input
-                    id="inputEmail"
+                    id="username"
+                    name="username"
                     type="text"
                     placeholder="Nombre de usuario"
                     required=""
@@ -29,7 +39,8 @@
                 </div>
                 <div class="form-group mb-3">
                   <input
-                    id="inputPassword"
+                    id="password"
+                    name="password"
                     type="password"
                     placeholder="Contraseña"
                     required=""
