@@ -1,0 +1,10 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url("https://images.pexels.com/photos/3821384/pexels-photo-3821384.jpeg?cs=srgb&dl=pexels-cleyder-duque-3821384.jpg&fm=jpg");
+  background-size: cover;
+  background-position: center center;
+}

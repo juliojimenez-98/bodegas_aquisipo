@@ -19,7 +19,6 @@ from django.urls import path
 from bodega_app import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index),
-    path('login', views.login),
+    
+
 ]
