@@ -1,0 +1,12 @@
+{% extends 'bodeapp/home/home.html' %} {% block contentHome %}
+
+<div class="card container mt-4">
+  <h5 class="card-header">Detalle de bodega</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{bodega.numero}}</h5>
+    <p class="card-text">{{bodega.descripcion}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+{% endblock contentHome %}

@@ -1,0 +1,26 @@
+{% extends 'bodeapp/home/home.html' %} {% block contentHome %}
+
+<h1 class="container">{{message}}</h1>
+<table class="table container responsive-table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for bodega in Bodegas %}
+    <tr>
+      <th scope="row">{{bodega.numero}}</th>
+      <td>{{bodega.descripcion}}</td>
+      <td>
+        <a href="{% url 'detalle-bodega' bodega.id  %}" class="btn btn-warning"
+          ><span class="glyphicon glyphicon-home"></span> Detalles
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock contentHome%}
