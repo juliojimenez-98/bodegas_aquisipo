@@ -15,7 +15,9 @@
       <th scope="row">{{bodega.numero}}</th>
       <td>{{bodega.descripcion}}</td>
       <td>
-        <a href="{% url 'detalle-bodega' bodega.id  %}" class="btn btn-warning"
+        <a
+          href="{% url 'detalle-bodega' bodega.id  %}"
+          class="btn btn-outline-primary rounded-pill btn-sm shadow-sm"
           ><span class="glyphicon glyphicon-home"></span> Detalles
         </a>
       </td>

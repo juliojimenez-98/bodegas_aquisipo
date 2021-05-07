@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-color-primary">
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -13,25 +13,11 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Admin, Bodegas Aquí Sipo</a>
+    <a class="navbar-brand" href="{% url 'bodegas' %}"
+      >Admin, Bodegas Aquí Sipo</a
+    >
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link disabled"
-            href="#"
-            tabindex="-1"
-            aria-disabled="true"
-            >Disabled</a
-          >
-        </li>
-      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 
       <a class="btn btn-outline-danger" href="{% url 'logout' %}">
         Cerrar Sesión
@@ -39,7 +25,124 @@
     </div>
   </div>
 </nav>
-{% block contentHome %} {% endblock contentHome %} {% else %}
+
+{% comment %}
+<div class="grid-container container-fluid">
+  <div class="row min-vh-100 flex-column flex-md-row">
+    <aside
+      class="col-sm-2 col-md-2 col-lg-2 p-0 bg-color-primary flex-shrink-1"
+    >
+      <nav
+        id="nav_accordion"
+        class="navbar sidebar navbar-expand navbar-dark bg-color-primary flex-md-column flex-row align-items-start py-2"
+      >
+        <div class="collapse navbar-collapse">
+          <ul
+            class="flex-md-column flex-row navbar-nav w-100 justify-content-between"
+          >
+            <li class="nav-item has-submenu">
+              <a class="nav-link pl-0 text-nowrap" href="{% url 'bodegas' %}"
+                ><i class="fas fa-warehouse fa-fw"></i>
+                <span class="font-weight-bold">Bodegas</span></a
+              >
+              <ul class="submenu collapse">
+                <li>
+                  <a class="nav-link" href="#"
+                    ><i class="fas fa-boxes fa-fw"></i>Listado de bodegas</a
+                  >
+                </li>
+                <li>
+                  <a class="nav-link" href="#"
+                    ><i class="fas fa-plus fa-fw"></i>Agregar bodegas</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pl-0" href="#"
+                ><i class="fa fa-heart codeply fa-fw"></i>
+                <span class="d-none d-md-inline">Codeply</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pl-0" href="#"
+                ><i class="fa fa-star codeply fa-fw"></i>
+                <span class="d-none d-md-inline">Link</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pl-0" href="#"
+                ><i class="fa fa-star fa-fw"></i>
+                <span class="d-none d-md-inline">Link</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    <main class="col bg-faded py-3 flex-grow-1">
+      {% block contentHome %} {% endblock contentHome %}
+    </main>
+  </div>
+</div>
+{% endcomment %}
+
+<nav
+  class="navbarr navbar-expand d-flex flex-column align-item-start"
+  id="sidebar"
+>
+  <ul class="navbar-nav d-flex flex-column mt-5 w-100">
+    <li class="nav-item dropdown w-100">
+      <a
+        href="#"
+        class="nav-link dropdown-toggle text-light pl-4"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-expanded="false"
+        ><i class="fas fa-warehouse fa-fw m-2"></i>Bodegas</a
+      >
+      <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+        <li>
+          <a
+            href="{% url 'bodegas' %}"
+            class="dropdown-item text-light pl-4 p-2"
+            ><i class="fas fa-boxes fa-fw m-2"></i>Listado de bodegas</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'add-bodega' %}"
+            class="dropdown-item text-light pl-4 p-2"
+            ><i class="fas fa-plus fa-fw m-2"></i>Agregar bodegas</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item w-100">
+      <a href="#" class="nav-link text-light pl-4"
+        ><i class="fas fa-users fa-fw m-2"></i>Usuarios</a
+      >
+    </li>
+    <li class="nav-item w-100">
+      <a href="#" class="nav-link text-light pl-4"
+        ><i class="fab fa-product-hunt fa-fw m-2"></i>Productos</a
+      >
+    </li>
+
+    <li class="nav-item w-100">
+      <a href="#" class="nav-link text-light pl-4"
+        ><i class="fas fa-chart-line fa-fw m-2"></i>Movimientos</a
+      >
+    </li>
+  </ul>
+</nav>
+<section class="p-4 my-container">
+  <button class="btn my-4" id="menu-btn"><i class="fas fa-bars"></i></button>
+  {% block contentHome %} {% endblock contentHome %}
+</section>
+
+{% else %}
 <div class="container">
   <div class="row">
     <div class="col-md-12 col-lg-12">

@@ -31,7 +31,7 @@ def login_view(request):
         if user:
             login(request, user)
             print("Usuario autenticado", user)
-            return redirect('home')
+            return redirect('bodegas')
         else:
             messages.error(request, 'Usuario o contraseña no válidos')
             
@@ -65,10 +65,12 @@ def add_bodega(request):
         print(numerodebodega, descripciondebodega)
         bodega = Bodega.objects.create(numero=numerodebodega,descripcion=descripciondebodega)
         if bodega:
-            return redirect('bodegas')
+            return redirect('bodegas')        
 
-   
     return render(request, "bodeapp/home/add-bodega.html", {'form':form})
+
+
+
 class BodegasListView(ListView):
     template_name = "bodeapp/home/bodegas.html"
     queryset = Bodega.objects.all().order_by('-numero')
