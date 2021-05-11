@@ -16,7 +16,9 @@
       <td>{{producto.nombre_producto}}</td>
       <td>{{producto.descripcion_producto}}</td>
       <td>
-        <a class="btn btn-outline-primary rounded-pill btn-sm shadow-sm"
+        <a
+          href="{% url 'detalle-producto' producto.id  %}"
+          class="btn btn-outline-success rounded-pill btn-sm shadow-sm"
           ><span class="glyphicon glyphicon-home"></span> Detalles
         </a>
       </td>

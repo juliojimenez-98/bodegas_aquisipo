@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 
 from .models import Producto
 
@@ -35,3 +36,13 @@ def add_producto(request):
 
     return render(request, "add-productos.html", {'form':form})
 
+
+
+class ProductoDetailView(DetailView):
+    model = Producto
+    template_name = "detalle-producto.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        return context
