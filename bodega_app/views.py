@@ -51,7 +51,7 @@ def home(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, 'Session cerrada exitosamente')
+    messages.success(request, 'Sesión cerrada exitosamente')
     return redirect('login')
 
 def add_bodega(request):
