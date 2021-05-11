@@ -19,8 +19,10 @@ from django.urls import path
 from django.urls import include
 
 from bodega_app import views
+from productos import views as producto_views
 
 from bodega_app.views import BodegasListView
+from productos.views import ProductoListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +32,10 @@ urlpatterns = [
     path('home', views.home, name="home"),
     path('home/bodegas', BodegasListView.as_view(), name="bodegas"),
     path("home/bodegas/add", views.add_bodega, name="add-bodega"),
+    path("home/productos/add", producto_views.add_producto, name="add_producto"),
+    path("home/productos/lista-productos",  ProductoListView.as_view(), name="lista-productos"),
 
-    path("home/bodegas/", include('bodega_app.urls'))
+
+    path("home/bodegas/", include('bodega_app.urls')),
+    path("home/productos/", include('productos.urls'))
 ]
